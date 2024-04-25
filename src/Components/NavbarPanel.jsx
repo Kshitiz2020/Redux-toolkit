@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function NavbarPanel() {
-  const cartProducts = useSelector((state) => state.cart);
+  const cartProducts = useSelector((state) => state.cart); // reading state
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">

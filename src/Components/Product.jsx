@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { add } from "../store/CartSlice";
 
 function Product() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); // dispatching the action
 
   const [products, getProducts] = useState([]);
   useEffect(() => {
