@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card"; // we need to import the react-bootstrap react component
 import Button from "react-bootstrap/Button"; // we need to import the react-bootstrap react component
+
+// importing reduxToolkit element
+import { useDispatch } from "react-redux";
+import { add } from "../store/CartSlice";
+
 function Product() {
+  const dispatch = useDispatch();
+
   const [products, getProducts] = useState([]);
   useEffect(() => {
     // api calling
@@ -9,6 +16,11 @@ function Product() {
       .then((data) => data.json())
       .then((result) => getProducts(result));
   }, []);
+
+  const addToCart = (product) => {
+    //dispatch an add action
+    dispatch(add(product));
+  };
 
   //MAPPING json data
 
@@ -27,7 +39,9 @@ function Product() {
           <Card.Text>{product.price} €</Card.Text>
         </Card.Body>
         <Card.Footer style={{ background: "white" }}>
-          <Button variant="primary">Add to Cart</Button>
+          <Button variant="primary" onClick={() => addToCart(product)}>
+            Add to Cart
+          </Button>
         </Card.Footer>
       </Card>
     </div>
